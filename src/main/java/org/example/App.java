@@ -113,10 +113,8 @@ public class App
     ]
 """;
     static final String JSON_3 = """
-    [
         { "count": 2, "files": [ { "name": "1.txt", "size": 1234, "type": "txt" }, 
         { "name": "2.png", "size": 456, "type": "png" } ] }
-    ]
 """;
 
     public static void main( String[] args) {
@@ -134,12 +132,12 @@ public class App
         System.out.println(Arrays.toString(files));
  */
         Gson gson3 = new GsonBuilder().setPrettyPrinting().create();
-        Files[] filesAndCount = gson3.fromJson(JSON_3, Files[].class);
+        Files filesAndCount = gson3.fromJson(JSON_3, Files.class);
         System.out.println(compareCountWithRealNumber(filesAndCount));
     }
-    public static boolean compareCountWithRealNumber(Files[] files){
-        int count = files[0].getCount();
-        int realNumber = files[0].getFiles().length;
+    public static boolean compareCountWithRealNumber(Files files){
+        int count = files.getCount();
+        int realNumber = files.getFiles().length;
         return count == realNumber;
     }
 }
